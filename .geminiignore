@@ -1,0 +1,22 @@
+# Ignore the virtual environment
+.venv/
+venv/
+env/
+
+# Ignore python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ignore environment variables
+.env
+
+# Ignore git history
+.git/
+
+# Ignore large data/vector DB folders (if you create them later)
+/data/
+/chroma_db/
+
+# UN-IGNORE the project instructions
+!GEMINI.md

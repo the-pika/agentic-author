@@ -1,0 +1,13 @@
+langchain
+langchain-google-genai
+langgraph
+langchain-chroma
+langchain-community
+tavily-python
+arxiv
+streamlit
+pandas
+python-dotenv
+pydantic
+typing-extensions
+googlesearch-python
