@@ -1,4 +1,3 @@
-import os
 from dotenv import load_dotenv
 from state import AgentState
 from llm_config import get_model
@@ -12,14 +11,14 @@ def verify():
     
     # 1. Check State
     try:
-        test_state = AgentState(topic="AI Agents", research_notes=["Result 1"], revision_count=0)
+        _ = AgentState(topic="AI Agents", research_notes=["Result 1"], revision_count=0)
         print("✅ State Schema: Valid")
     except Exception as e:
         print(f"❌ State Schema Error: {e}")
 
     # 2. Check Database
     try:
-        memory = BlogMemory()
+        _ = BlogMemory()
         print("✅ ChromaDB Connection: Valid")
     except Exception as e:
         print(f"❌ Database Error: {e} (Check if 'chromadb' is installed)")

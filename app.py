@@ -11,80 +11,81 @@ load_dotenv()
 # Add src to python path
 sys.path.append(os.path.join(os.path.dirname(__file__), 'src'))
 
-from graph import app, memory
-from state import AgentState
-from llm_config import handle_error
+from graph import app, memory  # noqa: E402
+from state import AgentState  # noqa: E402
+from llm_config import handle_error  # noqa: E402
 
 # Page Configuration
 st.set_page_config(page_title="Agentic Author", layout="wide")
 
 # Custom CSS for premium enterprise design
-st.markdown(f"""
+st.markdown("""
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 
     /* Global Typography & Background */
-    html, body, [class*="st-"] {{
+    html, body, [class*="st-"] {
         font-family: 'Inter', sans-serif;
         color: #2D3748;
-    }}
+    }
     
     /* Fix for expander arrow overlap text */
-    [data-testid="stExpander"] svg {{
+    [data-testid="stExpander"] svg, [data-testid="stExpander"] [data-testid="stIcon"] {
         display: none !important;
-    }}
-    [data-testid="stExpander"] p {{
+        visibility: hidden !important;
+    }
+    [data-testid="stExpander"] p {
         font-size: 0.9rem !important;
-    }}
+    }
 
-    .stApp {{
+    .stApp {
         background-color: #F7FAFC; /* Soft light background */
-    }}
+    }
 
     /* H1, H2, H3 Hierarchy */
-    h1 {{
+    h1 {
         font-weight: 700 !important;
         color: #1A202C !important;
         letter-spacing: -0.02em;
         margin-bottom: 0.5rem !important;
-    }}
+    }
     
-    .subheading {{
+    .subheading {
         font-size: 0.95rem;
         color: #718096;
         margin-bottom: 2rem;
         font-weight: 400;
-    }}
+    }
 
     /* Sidebar Styling */
-    section[data-testid="stSidebar"] {{
+    section[data-testid="stSidebar"] {
         background-color: #E1E8F0 !important; /* Dominant color */
         border-right: 1px solid #CBD5E0;
-    }}
+    }
     
-    section[data-testid="stSidebar"] .stMarkdown {{
+    section[data-testid="stSidebar"] .stMarkdown {
         padding-top: 1rem;
-    }}
+    }
 
     /* Card Containers / Lifted Effect */
-    [data-testid="stVerticalBlock"] > div > div > div[data-testid="stVerticalBlock"] {{
+    [data-testid="stVerticalBlock"] > div > div > div[data-testid="stVerticalBlock"] {
         background-color: white;
         padding: 2rem;
         border-radius: 12px;
         box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
         margin-bottom: 1.5rem;
-    }}
+    }
     
     /* Expander / Knowledge Vault Styling */
-    .stExpander {{
+    .stExpander {
         background-color: white !important;
         border: 1px solid #E2E8F0 !important;
         border-radius: 12px !important;
         box-shadow: 0 1px 3px rgba(0,0,0,0.1) !important;
-    }}
+    }
 
     /* Buttons - Secondary Color #6ED3CF and Accent #9068BE */
-    .stButton > button {{
+    .stButton > button {
         width: 100%;
         background-color: #6ED3CF !important; /* Secondary */
         color: #1A202C !important;
@@ -96,36 +97,36 @@ st.markdown(f"""
         text-transform: uppercase;
         letter-spacing: 0.05em;
         font-size: 0.75rem !important;
-    }}
+    }
     
-    .stButton > button:hover {{
+    .stButton > button:hover {
         background-color: #9068BE !important; /* Accent */
         color: white !important;
         transform: translateY(-2px);
         box-shadow: 0 4px 12px rgba(144, 104, 190, 0.3) !important;
-    }}
+    }
 
     /* Input Fields */
-    .stTextInput > div > div > input, .stSelectbox > div > div > div {{
+    .stTextInput > div > div > input, .stSelectbox > div > div > div {
         border-radius: 8px !important;
         border: 1px solid #E2E8F0 !important;
         background-color: #FFFFFF !important;
-    }}
+    }
     
     /* Data Presentation (Tables) */
-    [data-testid="stTable"], [data-testid="stDataFrame"] {{
+    [data-testid="stTable"], [data-testid="stDataFrame"] {
         border: none !important;
         border-radius: 12px !important;
         overflow: hidden !important;
-    }}
+    }
 
     /* Tabs */
-    .stTabs [data-baseweb="tab-list"] {{
+    .stTabs [data-baseweb="tab-list"] {
         gap: 8px;
         background-color: transparent;
-    }}
+    }
     
-    .stTabs [data-baseweb="tab"] {{
+    .stTabs [data-baseweb="tab"] {
         height: 45px;
         background-color: #E1E8F0;
         border-radius: 8px 8px 0 0;
@@ -133,20 +134,20 @@ st.markdown(f"""
         color: #4A5568;
         font-weight: 600;
         padding: 0 20px;
-    }}
+    }
     
-    .stTabs [aria-selected="true"] {{
+    .stTabs [aria-selected="true"] {
         background-color: #FFFFFF !important;
         color: #9068BE !important;
         border-bottom: 2px solid #9068BE !important;
-    }}
+    }
 
     /* Spacing fixes */
-    .block-container {{
+    .block-container {
         padding-top: 3rem !important;
         padding-bottom: 5rem !important;
         max-width: 1200px !important;
-    }}
+    }
     </style>
     """, unsafe_allow_html=True)
 

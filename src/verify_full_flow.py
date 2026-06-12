@@ -1,8 +1,6 @@
-import os
 from dotenv import load_dotenv
 from graph import app
 from memory_manager import BlogMemory
-from state import AgentState
 
 load_dotenv()
 

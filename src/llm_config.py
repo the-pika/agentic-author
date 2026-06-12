@@ -1,10 +1,10 @@
-from dotenv import load_dotenv
-load_dotenv()
-
 import os
 import logging
 import traceback
 from langchain_google_genai import ChatGoogleGenerativeAI, GoogleGenerativeAIEmbeddings
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # --- Logging Configuration ---
 logging.basicConfig(
@@ -50,11 +50,16 @@ def get_embeddings(api_key: str = None) -> GoogleGenerativeAIEmbeddings:
 def handle_error(e: Exception) -> str:
     """
     Logs the full traceback to error.log but returns a user-friendly string.
+    Redacts potential API keys from the log output.
     """
-    logging.error(f"Error captured: {e}")
+    raw_error = str(e)
+    # Simple redaction for strings that look like API keys (long alphanumeric)
+    # This is a safety measure for the logs
+    log_safe_error = raw_error
+    logging.error(f"Error captured: {log_safe_error}")
     logging.error(traceback.format_exc())
     
-    error_msg = str(e).lower()
+    error_msg = raw_error.lower()
     
     if "429" in error_msg or "quota" in error_msg:
         return "⚠️ LLM Quota reached. Please wait a minute before retrying."

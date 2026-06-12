@@ -1,5 +1,4 @@
 import chromadb
-from chromadb.config import Settings
 
 def polite_reset():
     db_path = "./chroma_db"

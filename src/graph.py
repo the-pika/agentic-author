@@ -274,12 +274,14 @@ def publisher_node(state: AgentState) -> dict:
             json_str = line.replace("References:", "").strip()
             try:
                 refs = json.loads(json_str)
-            except:
+            except Exception:
                 print("⚠️ Failed to parse references JSON")
 
     # Fallback if parsing fails
-    if not title: title = state.topic or "Untitled Post"
-    if not summary: summary = f"A technical deep-dive into {state.topic}."
+    if not title:
+        title = state.topic or "Untitled Post"
+    if not summary:
+        summary = f"A technical deep-dive into {state.topic}."
 
     return {
         "topic": title,
