@@ -44,6 +44,8 @@ Agentic Author is an advanced multi-agent system designed to automate the heavy 
 
 ## 🧠 System Architecture
 
+![Research Multi Agent Architecture](Research%20Multi%20Agent%20Architecture.jpg)
+
 The workflow is managed as a stateful graph where each node represents a specialized agent:
 
 1.  **Discovery Agent:** Checks niche alignment and suggests trending topics based on project history.

@@ -1,5 +1,7 @@
 # Autonomous AI Research Engine: Documentation
 
+![Research Multi Agent Architecture](Research%20Multi%20Agent%20Architecture.jpg)
+
 This documentation provides a comprehensive overview of the **Agentic Author** project, a multi-agent system built with LangGraph, Pydantic, and Gemini 1.5 Flash.
 
 ---
