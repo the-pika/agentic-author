@@ -156,14 +156,22 @@ st.markdown("<p class='subheading'>Autonomous Research and Writing Agent</p>", u
 st.markdown("---")
 
 # Initialize Session State
-if "final_draft" not in st.session_state: st.session_state.final_draft = ""
-if "all_research" not in st.session_state: st.session_state.all_research = []
-if "critique_history" not in st.session_state: st.session_state.critique_history = []
-if "metadata" not in st.session_state: st.session_state.metadata = {"title": "", "summary": "", "references": []}
-if "selected_topic" not in st.session_state: st.session_state.selected_topic = ""
-if "suggestions" not in st.session_state: st.session_state.suggestions = []
-if "last_niche" not in st.session_state: st.session_state.last_niche = ""
-if "last_run_time" not in st.session_state: st.session_state.last_run_time = 0
+if "final_draft" not in st.session_state:
+    st.session_state.final_draft = ""
+if "all_research" not in st.session_state:
+    st.session_state.all_research = []
+if "critique_history" not in st.session_state:
+    st.session_state.critique_history = []
+if "metadata" not in st.session_state:
+    st.session_state.metadata = {"title": "", "summary": "", "references": []}
+if "selected_topic" not in st.session_state:
+    st.session_state.selected_topic = ""
+if "suggestions" not in st.session_state:
+    st.session_state.suggestions = []
+if "last_niche" not in st.session_state:
+    st.session_state.last_niche = ""
+if "last_run_time" not in st.session_state:
+    st.session_state.last_run_time = 0
 
 # Sidebar: User Profile & Controls
 with st.sidebar:
@@ -356,14 +364,17 @@ tab_res, tab_crit, tab_mem = st.tabs(["Research Data", "Critique History", "Proj
 with tab_res:
     if st.session_state.all_research:
         for idx, note in enumerate(st.session_state.all_research):
-            with st.expander(f"Dataset {idx+1}"): st.write(note)
-    else: st.info("No research data yet.")
+            with st.expander(f"Dataset {idx+1}"):
+                st.write(note)
+    else:
+        st.info("No research data yet.")
 
 with tab_crit:
     if st.session_state.critique_history:
         for idx, feedback in enumerate(st.session_state.critique_history):
             st.info(f"**Revision {idx+1}:**\n\n{feedback}")
-    else: st.info("No critiques recorded.")
+    else:
+        st.info("No critiques recorded.")
 
 with tab_mem:
     st.subheader("Blog History")
