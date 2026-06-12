@@ -65,7 +65,7 @@ The workflow is managed as a stateful graph where each node represents a special
 
 ### 2. Clone the Repository
 ```bash
-git clone https://github.com/your-username/agentic-author.git
+git clone https://github.com/the-pika/agentic-author.git
 cd agentic-author
 ```
 
